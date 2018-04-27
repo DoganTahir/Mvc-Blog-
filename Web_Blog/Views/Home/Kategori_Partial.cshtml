@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Web_Blog.Models.Kategori>
+@{
+    Layout = null;
+}
+<h4>Kategoriler</h4>
+<div class="row">
+
+    <div class="col-lg-6">
+        @foreach (var item in Model)
+        {
+
+            <ul class="list-unstyled">
+                <li>
+                    <a href="#/@item.Kategori_Id">@item.Kategori_Adi (@item.Makales.Count())</a>
+                </li>
+            </ul>
+
+        }
+    </div>
+</div>
+

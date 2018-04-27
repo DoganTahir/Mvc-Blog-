@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Web_Blog.Models.Makale>
+
+@{
+    ViewBag.Title = "Kategori_Makale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori_Makale</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori.Kategori_Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uye.Kullanici_Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Okunma)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.Kategori_Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uye.Kullanici_Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Icerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Okunma)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Makale_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Makale_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Makale_Id })
+        </td>
+    </tr>
+}
+
+</table>

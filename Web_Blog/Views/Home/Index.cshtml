@@ -1,0 +1,55 @@
+﻿@model  IPagedList<Web_Blog.Models.Makale>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="col-md-8">
+    @foreach (var item in Model)
+    {
+
+
+
+
+    <article class="col-sm-12">
+        <h2>
+            <a style = "color:darkcyan" href="/Home/Makale_Detay/@item.Makale_Id">@item.Baslik</a>
+        </h2>
+        <p class="col">
+            <img class="img-circle img-responsive" width="50" src="@item.Uye.Foto" alt="@item.Uye.AdSoyad" />
+            <a style = "color:darkcyan"href="/Kullanici/Index/@item.Uye_id">@item.Uye.Kullanici_Adi</a>
+            <span class="glyphicon glyphicon-time"></span>@string.Format("{0: MMMM yyyy}", item.Tarih)
+            <span class="glyphicon glyphicon-tags"></span> @item.Etikets.Count
+        </p>       
+            <hr>
+            <img class="img-responsive" width="400" src="@item.Foto" alt="@item.Baslik">
+            <hr>
+
+            @if (item.Icerik.Length > 150)
+            {
+<p>@Html.Raw(item.Icerik.Substring(0,150))</p>
+            }
+            else
+            {
+                <p>@Html.Raw(item.Icerik) ...</p>
+            }
+
+        <a class="btn btn-primary" href="/Home/Makale_Detay/@item.Makale_Id">Devamını Oku <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <hr>
+    </article>
+    }
+    <div class="row">
+        <div class="col-md-8 text-center" >
+            <div class="pagedList pagination-lg">
+                @Html.PagedListPager(Model,Page=>Url.Action("Index",new { Page}),PagedListRenderOptions.Classic)
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
